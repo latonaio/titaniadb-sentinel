@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: titaniadb-sentinel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: titaniadb-sentinel
+  template:
+    metadata:
+      labels:
+        role: titaniadb-sentinel
+    spec:
+      containers:
+      - name: titaniadb-sentinel
+        command: ["/bin/sh", "-c", "while :; do sleep 10000; done"]
+        image: latonaio/titaniadb-sentinel:latest
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: MY_MYSQL_PASSWORD
+            value: MYSQL_PASSWORD_XXX
+        volumeMounts:
+          - name: src
+            mountPath: /var/lib/aion/Runtime/titaniadb-sentinel/
+      volumes:
+        - name: src
+          hostPath:
+            path: /home/latona/vega/Runtime/titaniadb-sentinel/src

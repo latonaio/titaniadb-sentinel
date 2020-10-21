@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: titaniadb-sentinel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: titaniadb-sentinel
+  template:
+    metadata:
+      labels:
+        role: titaniadb-sentinel
+    spec:
+      shareProcessNamespace: true
+      containers:
+      - name: titaniadb-sentinel
+        image: latonaio/titaniadb-sentinel:latest
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: MY_MYSQL_PASSWORD
+            value: MYSQL_PASSWORD_XXX

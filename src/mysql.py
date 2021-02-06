@@ -25,7 +25,7 @@ def format_sql(sql):
 
 
 class BaseTable():
-    def __enter__(self):
+    def __enter__(self): #DBに接続し、カーソルを取得する.
         try:
             self.connection = MySQLdb.connect(
                 host=HOST, port=PORT, user=USER, passwd=PASSWORD, charset='utf8')
@@ -35,7 +35,7 @@ class BaseTable():
             raise e
         return self
 
-    def __exit__(self, exception_type, exception_value, traceback):
+    def __exit__(self, exception_type, exception_value, traceback): #カーソルを閉じる
         if self.cursor:
             self.cursor.close()
             self.connection.close()
@@ -44,7 +44,7 @@ class BaseTable():
     def is_connect(self):
         return bool(self.cursor)
 
-    def get_query(self, sql, args=None):
+    def get_query(self, sql, args=None): #一件ずつデータを取得する
         if not self.cursor:
             return None
         self.cursor.execute(sql, args)

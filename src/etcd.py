@@ -19,13 +19,14 @@ class Base(etcd3.Etcd3Client):
     def __init__(self):
         super().__init__(host=HOST, port=PORT)
 
-    def watch_start(self):
+    def watch_start(self): #prefixを持つkeyをwatchする.
         events_iter, self.cancel = self.watch_prefix(self.BASE_KEY)
         for event in events_iter:
             yield event
         return
 
-    def get_dicts(self):
+#keyは、/self.BASE_KEY/ID の形でストアされている.
+    def get_dicts(self): #prefixを持つkeyのmetadata, valueを取得し、pod_data_typeなどの状態をdictsに入れる.
         tuples = self.get_prefix(self.BASE_KEY, sort_order='ascend')
         dicts = []
         for b_value, b_metadata in tuples:

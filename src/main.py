@@ -75,10 +75,10 @@ def upsert_all(etcd_client_class, mysql_client_class, interval, _queue): #すべ
             with mysql_client_class() as mysql_client:
                 for _dict in dicts:
                     mysql_client.upsert(_dict)
-
+                    
             del etcd_client
-
-            lprint(f'Success to upsert {mysql_client_class.__name__}.')
+            
+            lprint(f'Success to upsert {mysql_client_class.__name__}.') 
             pprint.pprint(dicts)
             time.sleep(int(interval))
 

@@ -1,5 +1,5 @@
 ## titaniadb-sentinel-test
-titaniadb-sentinel-testは、titaniadb-sentinelのテストの為に作られたmockサーバーです。
+titaniadb-sentinel-testは、titaniadb-sentinelのテスト用mockサーバーです。
 
 
 ## 概要
@@ -13,8 +13,22 @@ $ cd test
 $ docker-compose up
 ```
 
+## Input
+JSON形式のデータ。etcdに送られるデータの内容はtest_etcd.pyに記載されています。
+
+## Output
+MySQLへのデータ入力。MySQL内に保存されたデータは以下のコマンドによって確認することができます。
+
+```
+$ cd titaniadb-sentinel
+$ docker exec -it [コンテナ名] bash
+$ docker mysql -u root -p
+$ use [データベース名]
+$ select * from [テーブル名]
+```
+
 ## システム構造
-![System Configuration](images/titaniadb-sentinel-test.png)
+![System Configuration](documents/titaniadb-sentinel-test.png)
 
 ## 使用したdocker image
 ### bitnami/etcd

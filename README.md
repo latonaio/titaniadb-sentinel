@@ -42,4 +42,4 @@ deploymentは、PodとReplicaSetの宣言的なアップデート機能を提供
 * docker-build.sh
 * requirements.txt
 ## System Configuration
-![System Configuration](image/titaniadb_sentinel_fig.png)
+![System Configuration](documents/titaniadb-sentinel.png)

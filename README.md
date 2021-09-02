@@ -2,17 +2,40 @@
 
 titaniadb-sentinel は、titaniadb を対象として、データベース監視を行うマイクロサービスです。主にエッジ上で動作します。
 
-## Description
-
+## 概要
 titaniadb-sentinel は、etcd をラップした titaniadb と連携します。このマイクロサービスは、titania が収集したデータが蓄積されたデータベースにおいて、データの置換、挿入が正しく行われるよう監視することができます。
 
 titania は、IP、MAC アドレス、kubernetes ノードの状態、ポッドの状態など、エッジ間の安定したデータインタフェースや処理に重要な IoT メタデータをデータベースに蓄積しますが、titaniadb-sentinel は、これらのデータの置換、挿入が正しく行われるよう巡回します。
 
-## etcd
-
+### etcdとは
 etcd は、オープンソースで分散型のキーバリューストアです。etcd は kubernetes のプライマリーデータストアとして採用されており、kubernetes クラスタの情報を保存、複製しています。
 
 Github URL: https://github.com/etcd-io/etcd
+
+## 動作環境
+titaniadb-sentinelは、aion-coreのプラットフォーム上での動作を前提としています。 使用する際は、事前に下記の通りAIONの動作環境を用意してください。   
+* ARM CPU搭載のデバイス(NVIDIA Jetson シリーズ等)   
+* OS: Linux Ubuntu OS   
+* CPU: ARM64   
+* Kubernetes   
+* [AION](https://github.com/latonaio/aion-core)のリソース    
+
+## セットアップ
+以下のコマンドを実行して、docker imageを作成してください。
+```
+$ cd /path/to/titaniadb-sentinel
+$ make docker-build
+```
+
+## 起動方法
+以下のコマンドを実行して、podを立ち上げてください。
+```
+$ cd /path/to/titaniadb-sentinel
+$ kubectl apply -f k8s/development/deployment.yml
+
+# 本番環境の場合は以下
+$ kubectl apply -f k8s/production/deployment.yml
+```
 
 ## Input／Output
 

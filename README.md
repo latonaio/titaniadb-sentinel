@@ -13,7 +13,7 @@ etcd は、オープンソースで分散型のキーバリューストアです
 Github URL: https://github.com/etcd-io/etcd
 
 ## 動作環境
-stream-usb-video-by-rtspは、aion-coreのプラットフォーム上での動作を前提としています。 使用する際は、事前に下記の通りAIONの動作環境を用意してください。   
+titaniadb-sentinelは、aion-coreのプラットフォーム上での動作を前提としています。 使用する際は、事前に下記の通りAIONの動作環境を用意してください。   
 * ARM CPU搭載のデバイス(NVIDIA Jetson シリーズ等)   
 * OS: Linux Ubuntu OS   
 * CPU: ARM64   

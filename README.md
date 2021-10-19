@@ -8,6 +8,13 @@ titaniadb-sentinel は、etcdをラップしたエッジ上のtitaniadbと連携
 
 titaniadbは、エッジ上の IP、MACアドレス、kubernetesノードの状態、ポッドの状態など、エッジ間の安定したデータインタフェースや処理に重要なIoTメタデータをデータベースに蓄積しますが、titaniadb-sentinelは、エッジ上で、これらのデータの置換、挿入が正しく行われるよう巡回、制御します。  
 
+
+## 依存関係  
+
+- [distributed-service-discovery](https://github.com/latonaio/distributed-service-discovery)  
+- [gossip-propagation-d](https://github.com/latonaio/gossip-propagation-d)  
+
+
 ## etcd
 etcdは、オープンソースで分散型のキーバリューストアです。etcd はkubernetes のプライマリーデータストアとして採用されており、kubernetesクラスタの情報を保存、複製しています。  
 Github URL: https://github.com/etcd-io/etcd

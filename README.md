@@ -1,3 +1,8 @@
+<p align="center"> <img src="https://user-images.githubusercontent.com/91356865/142332974-be3fccd9-48b1-4dbf-83a3-b830b7ff59e4.png" width="300">
+</p> <p align="center"></p>
+
+***
+
 # titaniadb-sentinel
 titaniadb-sentinelは、エッジ上で、titaniadb(etcd) を対象として、データベースの監視、制御を行うマイクロサービスです。
 ![titaniadb-sentinel](documents/titaniadb_architecture.PNG)
